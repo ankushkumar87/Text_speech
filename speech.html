@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color:yellowgreen;
+        }
+        fieldset{
+           height: 100px;
+           width: 200px;
+           margin-top:200px;
+           padding:10px;
+        }
+        legend{
+            font-size:  25px;
+            color:blue;
+        }
+       #msg{
+           height: 20px;
+           width: 180px;
+           border:2px solid red;
+           background-color: black;
+           color:aliceblue;
+           margin-left: 8px;
+           border-radius:200px;
+           padding-left:5px;
+        }
+        #btn{
+           height: 22px;
+           width:100px;
+           color:black;
+           background-color: blanchedalmond;
+           font-size:18px;
+           border-radius: 50px;
+           margin-top:5px;
+           margin-left: 40px;
+
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+       <legend align="center" >Text speech</legend>
+    <input type="text" id="msg" placeholder="Enter the text"><br>
+    <button id="btn">speech</button>
+</fieldset>
+<script>
+    msg=document.getElementById("msg");
+    btn=document.getElementById("btn");
+    btn.addEventListener("click",()=>{
+        if(speechSynthesis){
+            console.log();
+            speech=new SpeechSynthesisUtterance(' ');
+            speech.lang='us-eng';
+            speech.text=msg.value;
+            speech.rate=1;
+            speech.pitch=10;
+            speech.volume=5;
+            window.speechSynthesis.speak(speech);
+        }
+        else
+         document.write("API!! is not supported");
+    })
+</script>
+</body>
+</html>
